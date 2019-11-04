@@ -1,148 +1,24 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<script src="//d3js.org/d3.v4.min.js"></script>
-	<script src="https://d3js.org/d3.v5.js"></script>
-	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega@5"></script>
-  	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-lite@3.4.0"></script>
-  	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-embed@4"></script>
-	<script type="text/javascript" src="vis1.js"></script>
-	<script type="text/javascript" src="vis2.js"></script>
-	<title>649 Final Project</title>
+  <style>
+    .vega-actions a {
+        margin-right: 12px;
+        color: #757575;
+        font-weight: normal;
+        font-size: 13px;
+    }
+    .error {
+        color: red;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-lite@3.4.0"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-embed@4"></script>
 </head>
-	
 <body>
-	<h1>Multidimensional Scaling</h1>
-	<h2>Jesse Velleu, SI 649</h2>
-	<p class="maintxt">MDS is an exploratory analysis technique for visualizing data in which underlying dimensions of a metric space are uncovered without requiring prior intuition as to what those dimensions are. This is useful for higher dimensional data that may be difficult to visualize without dimensional reduction. This technique relies on the idea that the variability in most higher dimensional data sets can be largely explained by a much smaller number of principal coordinates or dimensions.</p>
-	
-	<p class="maintxt">In order to create an MDS visualization, the data first must be formatted into a square matrix. This may be a distance matrix, a similarity matrix, a correlation matrix, etc. Any algorithm may be used to define a similarity matrix, and any multivariate data set that can be formatted into a similarity/distance matrix can be used to create an MDS plot, typically in two or three dimensions.</p>
-	
-	<p class="maintxt">To illustrate this concept, refer to this first example. On the right, we have a matrix of data with 16 dimensions. Consider these dimensions to be the distances between the column and row variable. These distances are used to generate the two dimensional plot on the left. Hover over the connecting lines to see how the dietance matrix is used to build this plot in the lower dimensional space; the length of each line is contained within the matrix.</p>
-	
-	<script src="//d3js.org/d3.v4.min.js"></script>
-	
-	<div class="gridwrapper2">
-	<div id="vis2a">
-	  	<script type="text/javascript" src="vis2.js"></script>
-	</div>
-	<div id="vis2b">
-      	<table id="distmat" class="fulltable">
-        	<tr>
-        	<td></td>
-        	<td class="W">W</td>
-        	<td class="X">X</td>
-        	<td class="Y">Y</td>
-			<td class="Z">Z</td>
-			</tr>
-        	<tr>
-        	<td class="W">W</td>
-        	<td id="WW" class="fivecell"><p>0</p></td>
-        	<td id="WX1" class="fivecell"><p>6</p></td>
-        	<td id="WY1" class="fivecell"><p>8.48</p></td>
-			<td id="WZ1" class="fivecell"><p>4.24</p></td>
-			</tr>
-        	<tr>
-        	<td class="X">X</td>
-        	<td id="WX2" class="fivecell"><p>6</p></td>
-        	<td id="XX" class="fivecell"><p>0</p></td>
-        	<td id="XY1" class="fivecell"><p>6</p></td>
-			<td id="XZ1" class="fivecell"><p>4.24</p></td>
-        	</tr>
-        	<tr>
-        	<td class="Y">Y</td>
-        	<td id="WY2" class="fivecell"><p>8.48</p></td>
-        	<td id="XY2" class="fivecell"><p>6</p></td>
-        	<td id="YY" class="fivecell"><p>0</p></td>
-			<td id="YZ1" class="fivecell"><p>4.24</p></td>
-        	</tr>
-			<tr>
-        	<td class="Z">Z</td>
-        	<td id="WZ2" class="fivecell"><p>4.24</p></td>
-        	<td id="XZ2" class="fivecell"><p>4.24</p></td>
-        	<td id="YZ2" class="fivecell"><p>4.24</p></td>
-			<td id="ZZ" class="fivecell"><p>5</p></td>
-        	</tr>
-      	</table>
-	</div>
-	</div>
-	
-	<p class="maintxt">Now, see if you can put this principle into practice. Drag the points in the following graph into their correct positions such that the current distance matrix (botom) matches the target distance matrix (top).</p>
-	
-	<div class="gridwrapper1">
-    <div id="vis1a">
-	  	<script type="text/javascript" src="vis1.js"></script>
-	</div>
-    <h2 id="vis1d" class="charttitle"> CURRENT DISTANCE MATRIX</h2>
-    <div id="vis1b">
-      	<table id="current" class="halftable">
-        	<tr>
-        	<td id="row1 column1"></td>
-        	<td id="row1 column2" class="A">A</td>
-        	<td id="row1 column3" class="B">B</td>
-        	<td id="row1 column4" class="C">C</td>
-        	</tr>
-        	<tr>
-        	<td id="row2 column1" class="A">A</td>
-        	<td id="row2 column2" class="fourcell"><p id="AA">0</p></td>
-        	<td id="row2 column3" class="fourcell"><p id="AB1">4.24</p></td>
-        	<td id="row2 column4" class="fourcell"><p id="AC1">5</p></td>
-        	</tr>
-        	<tr>
-        	<td id="row3 column1" class="B">B</td>
-        	<td id="row3 column2" class="fourcell"><p id="AB2">4.24</p></td>
-        	<td id="row3 column3" class="fourcell"><p id="BB">0</p></td>
-        	<td id="row3 column4" class="fourcell"><p id="BC1">6.08</p></td>
-        	</tr>
-        	<tr>
-        	<td id="row4 column1" class="C">C</td>
-        	<td id="row4 column2" class="fourcell"><p id="AC2">5</p></td>
-        	<td id="row4 column3" class="fourcell"><p id="BC2">6.08</p></td>
-        	<td id="row4 column4" class="fourcell"><p id="CC">0</p></td>
-        	</tr>
-      	</table>
-    </div>
-	  	<h2 id="vis1e" class="charttitle"> TARGET DISTANCE MATRIX</h2>
-    <div id="vis1c">
-      	<table id="target" class="halftable">
-        <tr>
-        <td id="t row1 column1"></td>
-        <td id="t row1 column2" class="A">A</td>
-        <td id="t row1 column3" class="B">B</td>
-        <td id="t row1 column4" class="C">C</td>
-        </tr>
-        <tr>
-        <td id="t row2 column1" class="A">A</td>
-        <td id="t row2 column2"><p id="tAA">0</p></td>
-        <td id="t row2 column3"><p id="tAB1">3</p></td>
-        <td id="t row2 column4"><p id="tAC1">5</p></td>
-        </tr>
-        <tr>
-        <td id="t row3 column1" class="B">B</td>
-        <td id="t row3 column2"><p id="tAB2">3</p></td>
-        <td id="t row3 column3"><p id="tBB">0</p></td>
-        <td id="t row3 column4"><p id="tBC1">4</p></td>
-        </tr>
-        <tr>
-        <td id="t row4 column1" class="C">C</td>
-        <td id="t row4 column2"><p id="tAC2">5</p></td>
-        <td id="t row4 column3"><p id="tBC2">4</p></td>
-        <td id="t row4 column4"><p id="tCC">0</p></td>
-        </tr>
-      </table>
-    </div>
-  	</div>
-	
-	<p class="maintxt">The real usefulness of MDS plots comes in their ability to portray the primary dimensions of a data set using only the variability within the data itself; no prior assumptions of the principal components is required. For example, this is property is useful in psychology as researchers are not ask subjects for their judgements about specific predetermined dimensions (e.g. taste, texture, etc.), but rather allow these important dimensions to be uncovered by post hoc encoding. While the algorithm that generates an MDS plot only knows the variation of the data, the researchers typically know additional parameters within the data set that can be used to encode the data in such a manner as to explain clusters and uncover trends.</p>
-	
-	<p class="maintxt">A team of researchers were studying students learning morse code. They constructed a matrix by counting the number of times students mistook one letter from another. So the distance between letters A and B would be the number of times students confused A for B or vice-versa.</p>
-	
-	<p class="maintxt">Finally, they overlaid various encodings onto this plot. Below, clockwise from the top left, the plot is encoded by letter type (vowel, consenant, or number), the number of dots/dashes that make up the letter, the percent of dots vs dashes in each letter, and the percentage that each letter is used in the english language. Can you identify which encodings my reveal the underlying dimensions?</p>
-	
-	<div id="vis"></div>
-  	<script>
+  <div id="vis"></div>
+  <script>
     (function(vegaEmbed) {
       var spec = {"config": {"view": {"width": 400, "height": 300}, "mark": {"tooltip": null}}, "vconcat": [{"hconcat": [{"mark": {"type": "point", "filled": true}, "encoding": {"color": {"type": "nominal", "field": "type"}, "opacity": {"condition": {"value": 1.0, "selection": "selector002"}, "value": 0.6}, "tooltip": [{"type": "nominal", "field": "char", "title": null}, {"type": "nominal", "field": "code", "title": null}], "x": {"type": "quantitative", "axis": null, "field": "x", "title": ""}, "y": {"type": "quantitative", "axis": null, "field": "y", "title": ""}}, "height": 400, "selection": {"selector002": {"type": "single", "on": "mouseover", "nearest": true, "empty": "none"}}, "width": 400}, {"mark": {"type": "point", "filled": true}, "encoding": {"opacity": {"condition": {"value": 1.0, "selection": "selector002"}, "value": 0.6}, "size": {"type": "ordinal", "field": "components"}, "tooltip": [{"type": "nominal", "field": "char", "title": null}, {"type": "nominal", "field": "code", "title": null}], "x": {"type": "quantitative", "axis": null, "field": "x", "title": ""}, "y": {"type": "quantitative", "axis": null, "field": "y", "title": ""}}, "height": 400, "selection": {"selector002": {"type": "single", "on": "mouseover", "nearest": true, "empty": "none"}}, "width": 400}]}, {"hconcat": [{"mark": {"type": "point", "filled": true}, "encoding": {"opacity": {"condition": {"value": 1.0, "selection": "selector002"}, "value": 0.6}, "size": {"type": "quantitative", "field": "usage rate"}, "tooltip": [{"type": "nominal", "field": "char", "title": null}, {"type": "nominal", "field": "code", "title": null}], "x": {"type": "quantitative", "axis": null, "field": "x", "title": ""}, "y": {"type": "quantitative", "axis": null, "field": "y", "title": ""}}, "height": 400, "selection": {"selector002": {"type": "single", "on": "mouseover", "nearest": true, "empty": "none"}}, "width": 400}, {"mark": {"type": "point", "filled": true}, "encoding": {"color": {"type": "quantitative", "field": "%dashes"}, "opacity": {"condition": {"value": 1.0, "selection": "selector002"}, "value": 0.6}, "tooltip": [{"type": "nominal", "field": "char", "title": null}, {"type": "nominal", "field": "code", "title": null}], "x": {"type": "quantitative", "axis": null, "field": "x", "title": ""}, "y": {"type": "quantitative", "axis": null, "field": "y", "title": ""}}, "height": 400, "selection": {"selector002": {"type": "single", "on": "mouseover", "nearest": true, "empty": "none"}}, "width": 400}]}], "data": {"name": "data-4b318e68bdbdc1ab6bc0b727f228dabd"}, "$schema": "https://vega.github.io/schema/vega-lite/v3.4.0.json", "datasets": {"data-4b318e68bdbdc1ab6bc0b727f228dabd": [{"char": "A", "code": ".-", "x": 248, "y": 70, "components": 2, "dots": 1, "dashes": 1, "%dots": 0.5, "%dashes": 0.5, "type": "vowel", "usage rate": 8.12, "order": 1, "Unnamed: 12": null}, {"char": "B", "code": "-...", "x": 113, "y": 225, "components": 4, "dots": 3, "dashes": 1, "%dots": 0.75, "%dashes": 0.25, "type": "consenant", "usage rate": 1.49, "order": 2, "Unnamed: 12": null}, {"char": "C", "code": "-.-.", "x": 178, "y": 265, "components": 4, "dots": 2, "dashes": 2, "%dots": 0.5, "%dashes": 0.5, "type": "consenant", "usage rate": 2.71, "order": 3, "Unnamed: 12": null}, {"char": "D", "code": "-..", "x": 163, "y": 175, "components": 3, "dots": 2, "dashes": 1, "%dots": 0.67, "%dashes": 0.33, "type": "consenant", "usage rate": 4.32, "order": 4, "Unnamed: 12": null}, {"char": "E", "code": ".", "x": 28, "y": 25, "components": 1, "dots": 1, "dashes": 0, "%dots": 1.0, "%dashes": 0.0, "type": "vowel", "usage rate": 12.02, "order": 5, "Unnamed: 12": null}, {"char": "F", "code": "..-.", "x": 123, "y": 250, "components": 4, "dots": 3, "dashes": 1, "%dots": 0.75, "%dashes": 0.25, "type": "consenant", "usage rate": 2.3, "order": 6, "Unnamed: 12": null}, {"char": "G", "code": "--.", "x": 283, "y": 245, "components": 3, "dots": 1, "dashes": 2, "%dots": 0.33, "%dashes": 0.67, "type": "consenant", "usage rate": 2.03, "order": 7, "Unnamed: 12": null}, {"char": "H", "code": "....", "x": 68, "y": 180, "components": 4, "dots": 4, "dashes": 0, "%dots": 1.0, "%dashes": 0.0, "type": "consenant", "usage rate": 5.92, "order": 8, "Unnamed: 12": null}, {"char": "I", "code": "..", "x": 168, "y": 40, "components": 2, "dots": 2, "dashes": 0, "%dots": 1.0, "%dashes": 0.0, "type": "vowel", "usage rate": 7.31, "order": 9, "Unnamed: 12": null}, {"char": "J", "code": ".---", "x": 223, "y": 340, "components": 4, "dots": 1, "dashes": 3, "%dots": 0.25, "%dashes": 0.75, "type": "consenant", "usage rate": 0.1, "order": 10, "Unnamed: 12": null}, {"char": "K", "code": "-.-", "x": 223, "y": 200, "components": 3, "dots": 1, "dashes": 2, "%dots": 0.33, "%dashes": 0.67, "type": "consenant", "usage rate": 0.69, "order": 11, "Unnamed: 12": null}, {"char": "L", "code": ".-..", "x": 148, "y": 230, "components": 4, "dots": 3, "dashes": 1, "%dots": 0.75, "%dashes": 0.25, "type": "consenant", "usage rate": 3.98, "order": 12, "Unnamed: 12": null}, {"char": "M", "code": "--", "x": 308, "y": 135, "components": 2, "dots": 0, "dashes": 2, "%dots": 0.0, "%dashes": 1.0, "type": "consenant", "usage rate": 2.61, "order": 13, "Unnamed: 12": null}, {"char": "N", "code": "-.", "x": 288, "y": 85, "components": 2, "dots": 1, "dashes": 1, "%dots": 0.5, "%dashes": 0.5, "type": "consenant", "usage rate": 6.95, "order": 14, "Unnamed: 12": null}, {"char": "O", "code": "---", "x": 308, "y": 285, "components": 3, "dots": 0, "dashes": 3, "%dots": 0.0, "%dashes": 1.0, "type": "vowel", "usage rate": 7.68, "order": 15, "Unnamed: 12": null}, {"char": "P", "code": ".--.", "x": 198, "y": 285, "components": 4, "dots": 2, "dashes": 2, "%dots": 0.5, "%dashes": 0.5, "type": "consenant", "usage rate": 1.82, "order": 16, "Unnamed: 12": null}, {"char": "Q", "code": "--.-", "x": 228, "y": 315, "components": 4, "dots": 1, "dashes": 3, "%dots": 0.25, "%dashes": 0.75, "type": "consenant", "usage rate": 0.11, "order": 17, "Unnamed: 12": null}, {"char": "R", "code": ".-.", "x": 203, "y": 150, "components": 3, "dots": 2, "dashes": 1, "%dots": 0.67, "%dashes": 0.33, "type": "consenant", "usage rate": 6.02, "order": 18, "Unnamed: 12": null}, {"char": "S", "code": "...", "x": 83, "y": 115, "components": 3, "dots": 3, "dashes": 0, "%dots": 1.0, "%dashes": 0.0, "type": "consenant", "usage rate": 6.28, "order": 19, "Unnamed: 12": null}, {"char": "T", "code": "-", "x": 103, "y": 15, "components": 1, "dots": 0, "dashes": 1, "%dots": 0.0, "%dashes": 1.0, "type": "consenant", "usage rate": 9.1, "order": 20, "Unnamed: 12": null}, {"char": "U", "code": "..-", "x": 148, "y": 140, "components": 3, "dots": 2, "dashes": 1, "%dots": 0.67, "%dashes": 0.33, "type": "vowel", "usage rate": 2.88, "order": 21, "Unnamed: 12": null}, {"char": "V", "code": "...-", "x": 73, "y": 235, "components": 4, "dots": 3, "dashes": 1, "%dots": 0.75, "%dashes": 0.25, "type": "consenant", "usage rate": 1.11, "order": 22, "Unnamed: 12": null}, {"char": "W", "code": ".--", "x": 248, "y": 200, "components": 3, "dots": 1, "dashes": 2, "%dots": 0.33, "%dashes": 0.67, "type": "consenant", "usage rate": 2.09, "order": 23, "Unnamed: 12": null}, {"char": "X", "code": "-..-", "x": 148, "y": 275, "components": 4, "dots": 2, "dashes": 2, "%dots": 0.5, "%dashes": 0.5, "type": "consenant", "usage rate": 0.17, "order": 24, "Unnamed: 12": null}, {"char": "Y", "code": "-.--", "x": 183, "y": 315, "components": 4, "dots": 1, "dashes": 3, "%dots": 0.25, "%dashes": 0.75, "type": "consenant", "usage rate": 2.11, "order": 25, "Unnamed: 12": null}, {"char": "Z", "code": "--..", "x": 223, "y": 290, "components": 4, "dots": 2, "dashes": 2, "%dots": 0.5, "%dashes": 0.5, "type": "consenant", "usage rate": 0.07, "order": 26, "Unnamed: 12": null}, {"char": "1", "code": "-----", "x": 238, "y": 380, "components": 5, "dots": 0, "dashes": 5, "%dots": 0.0, "%dashes": 1.0, "type": "number", "usage rate": 0.0, "order": 27, "Unnamed: 12": null}, {"char": "2", "code": ".----", "x": 178, "y": 355, "components": 5, "dots": 1, "dashes": 4, "%dots": 0.2, "%dashes": 0.8, "type": "number", "usage rate": 0.0, "order": 28, "Unnamed: 12": null}, {"char": "3", "code": "..---", "x": 93, "y": 345, "components": 5, "dots": 2, "dashes": 3, "%dots": 0.4, "%dashes": 0.6, "type": "number", "usage rate": 0.0, "order": 29, "Unnamed: 12": null}, {"char": "4", "code": "...--", "x": 58, "y": 290, "components": 5, "dots": 3, "dashes": 2, "%dots": 0.6, "%dashes": 0.4, "type": "number", "usage rate": 0.0, "order": 30, "Unnamed: 12": null}, {"char": "5", "code": "....-", "x": 33, "y": 255, "components": 5, "dots": 4, "dashes": 1, "%dots": 0.8, "%dashes": 0.2, "type": "number", "usage rate": 0.0, "order": 31, "Unnamed: 12": null}, {"char": "6", "code": ".....", "x": 103, "y": 300, "components": 5, "dots": 5, "dashes": 0, "%dots": 1.0, "%dashes": 0.0, "type": "number", "usage rate": 0.0, "order": 32, "Unnamed: 12": null}, {"char": "7", "code": "-....", "x": 143, "y": 325, "components": 5, "dots": 4, "dashes": 1, "%dots": 0.8, "%dashes": 0.2, "type": "number", "usage rate": 0.0, "order": 33, "Unnamed: 12": null}, {"char": "8", "code": "--...", "x": 203, "y": 380, "components": 5, "dots": 3, "dashes": 2, "%dots": 0.6, "%dashes": 0.4, "type": "number", "usage rate": 0.0, "order": 34, "Unnamed: 12": null}, {"char": "9", "code": "---..", "x": 293, "y": 360, "components": 5, "dots": 2, "dashes": 3, "%dots": 0.4, "%dashes": 0.6, "type": "number", "usage rate": 0.0, "order": 35, "Unnamed: 12": null}, {"char": "0", "code": "----.", "x": 283, "y": 395, "components": 5, "dots": 1, "dashes": 4, "%dots": 0.2, "%dashes": 0.8, "type": "number", "usage rate": 0.0, "order": 36, "Unnamed: 12": null}]}};
       var embedOpt = {"mode": "vega-lite"};
@@ -159,8 +35,7 @@
       vegaEmbed("#vis", spec, embedOpt)
         .catch(error => showError(el, error));
     })(vegaEmbed);
-  	</script>
-	
-	<p class="maintxt">Famously, researchers identified the number of components (top right) and the percentage of dots vs dashes (bottom right) as the primary dimensions. In the Number of Components encoding, notice how the dots get larger as you follow the vertical axis up; Letters that are made of more components are at the top and less components are at the bottom. Similarly in the Dots vs. Dashes chart, there is a trend of letters with more dashes on the right, and more dots on the left. Researchers were able to conclude that having a similar number of components and similar percentage of dots vs dashes were the two primary reasons students would confuse letters.</p>
+
+  </script>
 </body>
 </html>
